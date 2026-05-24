@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Portfolio PPG</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,500;1,500&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            serif: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    * { scroll-behavior: smooth; }
+    .fade-up { opacity: 0; transform: translateY(30px); animation: fadeUp 0.7s ease forwards; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+    .stagger-5 { animation-delay: 0.5s; }
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; transition: width 0.3s ease; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .card-hover { transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .card-hover:hover { transform: translateY(-6px); }
+    .artifact-card { border-left: 4px solid; }
+    .tab-btn.active-tab { font-weight: 700; }
+    .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; animation: blobFloat 8s ease-in-out infinite; }
+    @keyframes blobFloat { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(30px, -20px) scale(1.1); } }
+    .timeline-line { position: absolute; left: 19px; top: 40px; bottom: 0; width: 2px; }
+    .competency-ring { width: 80px; height: 80px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+    .competency-ring svg { position: absolute; top: 0; left: 0; transform: rotate(-90deg); }
+    .section-divider { height: 1px; background: linear-gradient(90deg, transparent, currentColor, transparent); opacity: 0.15; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { border-radius: 3px; }
+    .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+    .mobile-menu.open { transform: translateX(0); }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-sans overflow-auto" style="background-color: #FAFBFC; color: #1a2332;"><!-- Navigation -->
+  <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: rgba(250,251,252,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,35,50,0.06);">
+   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#hero" class="flex items-center gap-2 font-bold text-lg tracking-tight" id="nav-brand">
+     <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: #2563EB;">
+      <i data-lucide="graduation-cap" style="width:18px;height:18px;color:#fff;"></i>
+     </div><span id="nav-brand-text">E-Portfolio</span> </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium" id="nav-links-desktop">
+      <a href="#hero" class="nav-link active" style="color:#1a2332;" data-section="hero">Beranda</a>
+       <a href="#profil" class="nav-link" style="color:#64748b;" data-section="profil">Profil</a>
+        <a href="#artefak" class="nav-link" style="color:#64748b;" data-section="artefak">Artefak</a>
+         <a href="#model-guru" class="nav-link" style="color:#64748b;" data-section="model-guru">Model Guru</a>
+          <a href="#refleksi" class="nav-link" style="color:#64748b;" data-section="refleksi">Refleksi</a>
+    </div>
+    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg" onclick="toggleMobileMenu()"> 
+      <i data-lucide="menu" style="width:22px;height:22px;"></i> 
+    </button>
+   </div>
+   <!-- Mobile Menu -->
+   <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-64 z-50 p-6 md:hidden" style="background:#fff; box-shadow: -4px 0 20px rgba(0,0,0,0.1);">
+    <button onclick="toggleMobileMenu()" class="mb-8">
+      <i data-lucide="x" style="width:24px;height:24px;"></i>
+    </button>
+    <div class="flex flex-col gap-6 text-base font-medium">
+      <a href="#hero" onclick="toggleMobileMenu()" class="nav-link">Beranda</a> 
+      <a href="#profil" onclick="toggleMobileMenu()" class="nav-link">Profil</a> 
+      <a href="#artefak" onclick="toggleMobileMenu()" class="nav-link">Artefak</a> 
+      <a href="#model-guru" onclick="toggleMobileMenu()" class="nav-link">Model Guru</a>
+      <a href="#refleksi" onclick="toggleMobileMenu()" class="nav-link">Refleksi</a>
+    </div>
+   </div>
+  </nav>
+  <main class="w-full"><!-- HERO SECTION -->
+   <section id="hero" class="relative overflow-hidden" style="min-height: 90%; display:flex; align-items:center;">
+    <div class="blob" style="width:400px;height:400px;background:#2563EB;top:-100px;right:-100px;"></div>
+    <div class="blob" style="width:300px;height:300px;background:#10b981;bottom:-50px;left:-80px;animation-delay:3s;"></div>
+    <div class="max-w-6xl mx-auto px-6 py-32 relative z-10 w-full">
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+       <div class="fade-up inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-wide mb-6" style="background:rgba(37,99,235,0.08);color:#2563EB;">
+        <i data-lucide="sparkles" style="width:14px;height:14px;">
+        </i> PPG Prajabatan 2026
+       </div>
+       <h1 class="fade-up stagger-1 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-5" id="hero-name" style="color:#1a2332;">Ulfa<br>
+        Mardatillah</h1>
+       <p class="fade-up stagger-2 text-lg md:text-xl leading-relaxed mb-8 max-w-lg" id="hero-tagline" style="color:#64748b;">Membangun generasi emas melalui pendidikan yang bermakna dan inovatif.</p>
+       <div class="fade-up stagger-3 flex flex-wrap gap-4">
+        <a href="#profil" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold text-sm transition-all hover:shadow-lg hover:shadow-blue-200" style="background:#2563EB;"> 
+          <i data-lucide="user" style="width:16px;height:16px;">
+          </i> Lihat Profil 
+        </a> 
+        <a href="#artefak" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm border-2 transition-all hover:shadow-md" style="border-color:#e2e8f0;color:#1a2332;"> 
+          <i data-lucide="folder-open" style="width:16px;height:16px;">
+          </i> Artefak 
+        </a>
+       </div>
+      </div>
+      <div class="fade-up stagger-4 flex justify-center" >
+       <div class="relative">
+        <div class="w-64 h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden shadow-2xl" style="background: linear-gradient(135deg, #2563EB 0%, #10b981 100%);">
+         <div class="w-full h-full flex flex-col items-end justify-center text-white">
+         <img src="./img/ppulfa.png" alt="Foto">
+         </div>
+        </div>
+        <div class="absolute -bottom-4 -right-4 px-4 py-2 rounded-xl shadow-lg text-xs font-bold" style="background:#fff;color:#2563EB;"><i data-lucide="award" style="width:14px;height:14px;display:inline;vertical-align:middle;"></i> Calon Guru Profesional
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- PROFIL SECTION -->
+   <section id="profil" class="py-24 relative">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="fade-up text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold mb-4" style="background:rgba(37,99,235,0.08);color:#2563EB;">
+       01 — PROFIL
+      </div>
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight" style="color:#1a2332;">Profil Mahasiswa</h2>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8"><!-- Asal Daerah -->
+      <div class="fade-up stagger-1 card-hover rounded-2xl p-8 border" style="background:#fff;border-color:#e2e8f0;">
+       <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(37,99,235,0.08);">
+        <i data-lucide="map-pin" style="width:22px;height:22px;color:#2563EB;"></i>
+       </div>
+       <h3 class="text-lg font-bold mb-3" style="color:#1a2332;">Asal Daerah</h3>
+       <p class="text-sm leading-relaxed" id="profil-origin" style="color:#64748b;">Saya berasal dari <strong id="origin-place">Merangin, Jambi</strong> — Saya berasal dari daerah yang memiliki budaya gotong royong yang kuat. Lingkungan tersebut membentuk karakter saya menjadi pribadi yang adaptif, kolaboratif, dan memiliki semangat untuk berbagi ilmu. </p>
+      </div><!-- Inspirasi -->
+      <div class="fade-up stagger-2 card-hover rounded-2xl p-8 border" style="background:#fff;border-color:#e2e8f0;">
+       <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(16,185,129,0.08);">
+        <i data-lucide="lightbulb" style="width:22px;height:22px;color:#10b981;"></i>
+       </div>
+       <h3 class="text-lg font-bold mb-3" style="color:#1a2332;">Inspirasi &amp; Tujuan</h3>
+       <p class="text-sm leading-relaxed" style="color:#64748b;">Terinspirasi oleh guru SD saya yang mampu mengubah pelajaran menjadi petualangan, saya bertekad menjadi pendidik yang tidak hanya mentransfer pengetahuan tetapi juga menumbuhkan rasa ingin tahu dan keberanian berpikir kritis pada setiap peserta didik.</p>
+      </div><!-- Kutipan -->
+      <div class="fade-up stagger-3 card-hover rounded-2xl p-8 relative overflow-hidden" style="background: linear-gradient(135deg, #2563EB, #1d4ed8); color:#fff;">
+       <div class="absolute top-4 right-4 opacity-10"><i data-lucide="quote" style="width:60px;height:60px;"></i>
+       </div>
+       <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(255,255,255,0.15);">
+        <i data-lucide="quote" style="width:22px;height:22px;color:#fff;"></i>
+       </div>
+       <h3 class="text-lg font-bold mb-3">Kutipan</h3>
+       <p class="text-sm leading-relaxed italic opacity-90" id="profil-quote">"Pendidikan adalah senjata paling ampuh yang bisa kamu gunakan untuk mengubah dunia."</p>
+       <p class="mt-3 text-xs font-semibold opacity-70">— Nelson Mandela</p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider max-w-6xl mx-auto" style="color:#1a2332;"></div>
+   <!-- ARTEFAK SECTION -->
+   <section id="artefak" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="fade-up text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold mb-4" style="background:rgba(37,99,235,0.08);color:#2563EB;">
+       02 — ARTEFAK
+      </div>
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-3" style="color:#1a2332;">Artefak Pembelajaran</h2>
+      <p class="text-base max-w-2xl mx-auto" style="color:#64748b;">Produk rencana dan perangkat pembelajaran yang dikembangkan selama PPL Terbimbing, disertai analisis mendalam berbasis teori.</p>
+     </div><!-- Artifact Tabs -->
+     <div class="flex flex-wrap justify-center gap-2 mb-10" id="artifact-tabs">
+      <button class="tab-btn active-tab px-5 py-2.5 rounded-xl text-sm font-medium transition-all" data-tab="rpp" style="background:#2563EB;color:#fff;" onclick="switchTab('rpp', this)">RPP</button> 
+      <button class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all" data-tab="media" style="background:#f1f5f9;color:#64748b;" onclick="switchTab('media', this)">Media</button> 
+      <button class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all" data-tab="hasil" style="background:#f1f5f9;color:#64748b;" onclick="switchTab('hasil', this)">Hasil Kerja Siswa</button> 
+      <button class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all" data-tab="penilaian" style="background:#f1f5f9;color:#64748b;" onclick="switchTab('penilaian', this)">Penilaian</button> 
+      <button class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all" data-tab="video" style="background:#f1f5f9;color:#64748b;" onclick="switchTab('video', this)">Video</button>
+     </div><!-- Artifact Content -->
+     <div id="artifact-content"><!-- RPP -->
+      <div class="artifact-panel" data-panel="rpp">
+       <div class="grid md:grid-cols-2 gap-6">
+        <div class="artifact-card rounded-2xl p-7 border" style="background:#fff;border-color:#e2e8f0;border-left-color:#2563EB;">
+         <div class="flex items-start gap-4 mb-4">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(37,99,235,0.08);">
+            <i data-lucide="file-text" style="width:18px;height:18px;color:#2563EB;"></i>
+          </div>
+          <div>
+           <h4 class="font-bold text-base" style="color:#1a2332;">RPP Tematik — Tema Lingkungan</h4>
+           <span class="text-xs font-medium px-2 py-0.5 rounded-full" style="background:rgba(37,99,235,0.08);color:#2563EB;">Kelas IV SD</span>
+          </div>
+         </div>
+         <div class="space-y-3 text-sm" style="color:#64748b;">
+          <div>
+           <strong style="color:#1a2332;">Konteks:</strong> RPP dirancang untuk pembelajaran tematik integratif dengan pendekatan saintifik pada kelas X SMA Fase E
+          </div>
+          <div>
+           <strong style="color:#1a2332;">Tujuan:</strong> Mengembangkan kemampuan berpikir kritis dan kepedulian lingkungan melalui kegiatan observasi, diskusi, dan proyek mini.
+          </div>
+          <div>
+           <strong style="color:#1a2332;">Kelebihan:</strong> Pembelajaran Informatika berjalan dengan aktivitas berbasis pengalaman langsung.
+
+          </div>
+          <div>
+           <strong style="color:#1a2332;">Kekurangan:</strong> Alokasi waktu untuk kegiatan eksplorasi outdoor masih perlu diperpanjang agar siswa mendapat pengalaman yang lebih mendalam.
+          </div>
+          <div class="pt-2 border-t" style="border-color:#f1f5f9;"><strong style="color:#2563EB;">Kajian Teori:</strong> Berdasarkan teori <em>Constructivism</em> (Piaget &amp; Vygotsky), pembelajaran ini menekankan pembangunan pengetahuan melalui pengalaman langsung dan interaksi sosial dalam zona perkembangan proksimal.
+          </div>
+         </div>
+        </div>
+        <div class="artifact-card rounded-2xl p-7 border" style="background:#fff;border-color:#e2e8f0;border-left-color:#10b981;">
+         <div class="flex items-start gap-4 mb-4">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(16,185,129,0.08);">
+            <i data-lucide="file-text" style="width:18px;height:18px;color:#10b981;"></i>
+          </div>
+          <div>
+           <h4 class="font-bold text-base" style="color:#1a2332;">RPP Diferensiasi — Informatika</h4><span class="text-xs font-medium px-2 py-0.5 rounded-full" style="background:rgba(16,185,129,0.08);color:#10b981;">Kelas X SMA</span>
+          </div>
+         </div>
+         <div class="space-y-3 text-sm" style="color:#64748b;">
+          <div>
+           <strong style="color:#1a2332;">Konteks:</strong> RPP disusun untuk mengakomodasi keberagaman gaya belajar dan tingkat pemahaman siswa kelas X
+          </div>
+          <div>
+           <strong style="color:#1a2332;">Tujuan:</strong> Menerapkan pembelajaran berdiferensiasi (konten, proses, produk) sesuai profil belajar siswa.
+          </div>
+          <div>
+           <strong style="color:#1a2332;">Kelebihan:</strong> Asesmen diagnostik di awal membantu pengelompokan yang tepat sehingga setiap kelompok mendapat tantangan sesuai level.
+          </div>
+          <div>
+           <strong style="color:#1a2332;">Kekurangan:</strong> Membutuhkan persiapan materi yang lebih banyak dan manajemen kelas yang lebih ketat.
+          </div>
+          <div class="pt-2 border-t" style="border-color:#f1f5f9;"><strong style="color:#10b981;">Kajian Teori:</strong> Mengacu pada <em>Differentiated Instruction</em> (Tomlinson, 2001) yang menekankan bahwa guru harus merespons kebutuhan belajar yang beragam.
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Media -->
+      <div class="artifact-panel hidden" data-panel="media">
+       <div class="grid md:grid-cols-2 gap-6">
+        <div class="artifact-card rounded-2xl p-7 border" style="background:#fff;border-color:#e2e8f0;border-left-color:#8b5cf6;">
+         <div class="flex items-start gap-4 mb-4">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(139,92,246,0.08);">
+            <i data-lucide="layout" style="width:18px;height:18px;color:#8b5cf6;"></i>
+          </div>
+          <div>
+           <h4 class="font-bold text-base" style="color:#1a2332;">Media Interaktif — Canva &amp; Quizizz</h4>
+           <span class="text-xs font-medium px-2 py-0.5 rounded-full" style="background:rgba(139,92,246,0.08);color:#8b5cf6;">Digital</span>
+          </div>
+         </div>
+         <div class="space-y-3 text-sm" style="color:#64748b;">
+          <div>
+           <strong style="color:#1a2332;">Konteks:</strong> Media digital dirancang untuk meningkatkan engagement siswa pada materi teks narasi menggunakan Canva untuk presentasi dan Quizizz untuk kuis interaktif.
+          </div>
+          <div>
+           <strong style="color:#1a2332;">Tujuan:</strong> Memanfaatkan teknologi untuk menciptakan pengalaman belajar yang menyenangkan dan mendorong partisipasi aktif semua siswa.
+          </div>
+          <div>
+           <strong style="color:#1a2332;">Kelebihan:</strong> Visualisasi yang menarik dan elemen gamifikasi dari Quizizz meningkatkan motivasi belajar siswa secara signifikan.
+          </div>
+          <div>
+           <strong style="color:#1a2332;">Kekurangan:</strong> Ketergantungan pada koneksi internet dan ketersediaan perangkat digital di sekolah.
+          </div>
+          <div class="pt-2 border-t" style="border-color:#f1f5f9;"><strong style="color:#8b5cf6;">Kajian Teori:</strong> Sesuai dengan <em>TPACK Framework</em> (Mishra &amp; Koehler, 2006) yang mengintegrasikan pengetahuan teknologi, pedagogi, dan konten.
+          </div>
+         </div>
+        </div>
+        <div class="artifact-card rounded-2xl p-7 border" style="background:#fff;border-color:#e2e8f0;border-left-color:#f59e0b;">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:rgba(245,158,11,0.08);">
+          <i data-lucide="boxes" style="width:18px;height:18px;color:#f59e0b;"></i>
+         </div>
+         <h4 class="font-bold text-base mb-3" style="color:#1a2332;">Media Manipulatif — Alat Peraga Pecahan</h4>
+         <div class="space-y-3 text-sm" style="color:#64748b;">
+          <div>
+           <strong style="color:#1a2332;">Konteks:</strong> Alat peraga fisik dari kertas warna untuk memvisualisasikan konsep pecahan.
+          </div>
+          <div>
+           <strong style="color:#1a2332;">Tujuan:</strong> Membantu siswa memahami konsep abstrak melalui benda konkret sesuai tahap perkembangan kognitif.
+          </div>
+          <div>
+           <strong style="color:#1a2332;">Kelebihan:</strong> Siswa dapat melihat dan memanipulasi langsung, meningkatkan pemahaman konseptual.
+          </div>
+          <div>
+           <strong style="color:#1a2332;">Kekurangan:</strong> Mudah rusak dan memerlukan waktu persiapan yang cukup lama.
+          </div>
+          <div class="pt-2 border-t" style="border-color:#f1f5f9;">
+            <strong style="color:#f59e0b;">Kajian Teori:</strong> Berdasarkan teori <em>Concrete-Representational-Abstract</em> (Bruner) tentang tahapan belajar dari konkret ke abstrak.
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Hasil Kerja Siswa -->
+      <div class="artifact-panel hidden" data-panel="hasil">
+       <div class="artifact-card rounded-2xl p-7 border" style="background:#fff;border-color:#e2e8f0;border-left-color:#ec4899;">
+        <div class="flex items-start gap-4 mb-4">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(236,72,153,0.08);">
+          <i data-lucide="pen-tool" style="width:18px;height:18px;color:#ec4899;"></i>
+         </div>
+         <div>
+          <h4 class="font-bold text-base" style="color:#1a2332;">Contoh Hasil Kerja Siswa — Proyek Poster Lingkungan</h4>
+          <span class="text-xs font-medium px-2 py-0.5 rounded-full" style="background:rgba(236,72,153,0.08);color:#ec4899;">Project-Based Learning</span>
+         </div>
+        </div>
+        <div class="space-y-3 text-sm" style="color:#64748b;">
+         <div>
+          <strong style="color:#1a2332;">Konteks:</strong> Siswa kelas IV membuat poster kampanye lingkungan sebagai produk akhir tema lingkungan hidup.
+         </div>
+         <div>
+          <strong style="color:#1a2332;">Tujuan:</strong> Mengukur pemahaman siswa terhadap materi sekaligus mengembangkan kreativitas dan kemampuan komunikasi visual.
+         </div>
+         <div>
+          <strong style="color:#1a2332;">Kelebihan:</strong> Poster menunjukkan pemahaman mendalam siswa dan kreativitas yang tinggi dalam menyampaikan pesan.
+         </div>
+         <div>
+          <strong style="color:#1a2332;">Kekurangan:</strong> Beberapa siswa masih kesulitan menuangkan ide ke bentuk visual; perlu scaffolding lebih lanjut.
+         </div>
+         <div class="pt-2 border-t" style="border-color:#f1f5f9;">
+          <strong style="color:#ec4899;">Kajian Teori:</strong> Merujuk pada <em>Project-Based Learning</em> (Thomas, 2000) yang menekankan pembelajaran autentik melalui penyelesaian proyek bermakna.
+         </div>
+        </div>
+       </div>
+      </div><!-- Penilaian -->
+      <div class="artifact-panel hidden" data-panel="penilaian">
+       <div class="grid md:grid-cols-2 gap-6">
+        <div class="artifact-card rounded-2xl p-7 border" style="background:#fff;border-color:#e2e8f0;border-left-color:#06b6d4;">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:rgba(6,182,212,0.08);">
+          <i data-lucide="clipboard-check" style="width:18px;height:18px;color:#06b6d4;"></i>
+         </div>
+         <h4 class="font-bold text-base mb-3" style="color:#1a2332;">Penilaian Guru Pamong (GP)</h4>
+         <div class="space-y-3 text-sm" style="color:#64748b;">
+          <div>
+           <strong style="color:#1a2332;">Aspek:</strong> Pengelolaan kelas, penguasaan materi, kesesuaian metode.
+          </div>
+          <div>
+           <strong style="color:#1a2332;">Kekuatan:</strong> Kemampuan membangun rapport dengan siswa dan menciptakan suasana belajar yang kondusif.
+          </div>
+          <div>
+           <strong style="color:#1a2332;">Area Pengembangan:</strong> Perlu meningkatkan kemampuan time management dalam setiap sesi pembelajaran.
+          </div>
+         </div>
+        </div>
+        <div class="artifact-card rounded-2xl p-7 border" style="background:#fff;border-color:#e2e8f0;border-left-color:#f97316;">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:rgba(249,115,22,0.08);">
+          <i data-lucide="star" style="width:18px;height:18px;color:#f97316;"></i>
+         </div>
+         <h4 class="font-bold text-base mb-3" style="color:#1a2332;">Penilaian Dosen Pembimbing (DPL)</h4>
+         <div class="space-y-3 text-sm" style="color:#64748b;">
+          <div>
+           <strong style="color:#1a2332;">Aspek:</strong> Perencanaan, pelaksanaan, evaluasi, dan refleksi pembelajaran.
+          </div>
+          <div>
+           <strong style="color:#1a2332;">Kekuatan:</strong> RPP terstruktur baik dengan indikator yang terukur dan aktivitas yang bervariasi.
+          </div>
+          <div>
+           <strong style="color:#1a2332;">Area Pengembangan:</strong> Perlu memperkuat integrasi asesmen formatif selama proses pembelajaran berlangsung.
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Video -->
+      <div class="artifact-panel hidden" data-panel="video">
+       <div class="artifact-card rounded-2xl p-7 border" style="background:#fff;border-color:#e2e8f0;border-left-color:#2563EB;">
+        <div class="flex items-start gap-4 mb-4">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(37,99,235,0.08);">
+          <i data-lucide="video" style="width:18px;height:18px;color:#2563EB;"></i>
+         </div>
+         <div>
+          <h4 class="font-bold text-base" style="color:#1a2332;">Video Praktik Mengajar</h4>
+          <span class="text-xs font-medium px-2 py-0.5 rounded-full" style="background:rgba(37,99,235,0.08);color:#2563EB;">PPL Terbimbing</span>
+         </div>
+        </div>
+        <div class="rounded-xl overflow-hidden mb-5 flex items-center justify-center" style="background:#f1f5f9;height:200px;">
+         <div class="text-center" style="color:#94a3b8;"><i data-lucide="play-circle" style="width:48px;height:48px;margin:0 auto 8px;"></i>
+          <p class="text-sm font-medium">Video Praktik Mengajar</p>
+          <p class="text-xs mt-1">Sisipkan link video di sini</p>
+         </div>
+        </div>
+        <div class="space-y-3 text-sm" style="color:#64748b;">
+         <div>
+          <strong style="color:#1a2332;">Konteks:</strong> Rekaman praktik mengajar pada sesi PPL Terbimbing pertemuan ke-3 di kelas IV SD.
+         </div>
+         <div>
+          <strong style="color:#1a2332;">Tujuan:</strong> Dokumentasi dan bahan refleksi untuk menganalisis kualitas interaksi guru-siswa.
+         </div>
+         <div>
+          <strong style="color:#1a2332;">Refleksi:</strong> Dari video terlihat peningkatan kemampuan bertanya tingkat tinggi (HOTS) dan pemberian wait time yang lebih baik dibanding pertemuan sebelumnya.
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider max-w-6xl mx-auto" style="color:#1a2332;"></div><!-- MODEL GURU SECTION -->
+   <section id="model-guru" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="fade-up text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold mb-4" style="background:rgba(37,99,235,0.08);color:#2563EB;">
+       03 — MODEL GURU
+      </div>
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-3" id="guru-title" style="color:#1a2332;">Model Guru yang Dituju</h2>
+      <p class="text-base max-w-2xl mx-auto" style="color:#64748b;">Misi, kompetensi, dan karakter yang ingin dibangun menuju guru profesional.</p>
+     </div><!-- Mission -->
+     <div class="fade-up rounded-2xl p-8 md:p-10 mb-12 relative overflow-hidden" style="background: linear-gradient(135deg, #1a2332, #2563EB);">
+      <div class="blob" style="width:200px;height:200px;background:#10b981;top:-50px;right:-50px;opacity:0.2;"></div>
+      <div class="relative z-10 text-center max-w-3xl mx-auto">
+       <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5" style="background:rgba(255,255,255,0.1);">
+        <i data-lucide="target" style="width:28px;height:28px;color:#fff;"></i>
+       </div>
+       <h3 class="text-2xl font-bold text-white mb-4" id="mission-text">Misi Profesional</h3>
+       <p class="text-base leading-relaxed" style="color:rgba(255,255,255,0.8);">Menjadi guru yang mampu menciptakan ekosistem pembelajaran inklusif, inovatif, dan bermakna yang memberdayakan setiap peserta didik untuk mencapai potensi terbaiknya melalui pendekatan yang humanis dan berbasis teknologi.</p>
+      </div>
+     </div><!-- Competencies -->
+     <div class="grid md:grid-cols-4 gap-6 mb-12">
+      <div class="fade-up stagger-1 card-hover rounded-2xl p-6 border text-center" style="background:#fff;border-color:#e2e8f0;">
+       <div class="competency-ring mx-auto mb-4" style="background:rgba(37,99,235,0.05);">
+        <svg width="80" height="80">
+         <circle cx="40" cy="40" r="35" fill="none" stroke="#e2e8f0" stroke-width="4" /><circle cx="40" cy="40" r="35" fill="none" stroke="#2563EB" stroke-width="4" stroke-dasharray="198" stroke-dashoffset="20" stroke-linecap="round" />
+        </svg><i data-lucide="brain" style="width:24px;height:24px;color:#2563EB;position:relative;z-index:1;"></i>
+       </div>
+       <h4 class="font-bold text-sm mb-1" style="color:#1a2332;">Pedagogik</h4>
+       <p class="text-xs" style="color:#64748b;">Menguasai teori belajar &amp; strategi pembelajaran inovatif</p>
+      </div>
+      <div class="fade-up stagger-2 card-hover rounded-2xl p-6 border text-center" style="background:#fff;border-color:#e2e8f0;">
+       <div class="competency-ring mx-auto mb-4" style="background:rgba(16,185,129,0.05);">
+        <svg width="80" height="80">
+         <circle cx="40" cy="40" r="35" fill="none" stroke="#e2e8f0" stroke-width="4" /><circle cx="40" cy="40" r="35" fill="none" stroke="#10b981" stroke-width="4" stroke-dasharray="198" stroke-dashoffset="40" stroke-linecap="round" />
+        </svg><i data-lucide="book-open" style="width:24px;height:24px;color:#10b981;position:relative;z-index:1;"></i>
+       </div>
+       <h4 class="font-bold text-sm mb-1" style="color:#1a2332;">Profesional</h4>
+       <p class="text-xs" style="color:#64748b;">Mendalami materi ajar &amp; terus mengembangkan diri</p>
+      </div>
+      <div class="fade-up stagger-3 card-hover rounded-2xl p-6 border text-center" style="background:#fff;border-color:#e2e8f0;">
+       <div class="competency-ring mx-auto mb-4" style="background:rgba(139,92,246,0.05);">
+        <svg width="80" height="80">
+         <circle cx="40" cy="40" r="35" fill="none" stroke="#e2e8f0" stroke-width="4" /><circle cx="40" cy="40" r="35" fill="none" stroke="#8b5cf6" stroke-width="4" stroke-dasharray="198" stroke-dashoffset="50" stroke-linecap="round" />
+        </svg><i data-lucide="users" style="width:24px;height:24px;color:#8b5cf6;position:relative;z-index:1;"></i>
+       </div>
+       <h4 class="font-bold text-sm mb-1" style="color:#1a2332;">Sosial</h4>
+       <p class="text-xs" style="color:#64748b;">Berkomunikasi efektif dengan siswa, orang tua &amp; kolega</p>
+      </div>
+      <div class="fade-up stagger-4 card-hover rounded-2xl p-6 border text-center" style="background:#fff;border-color:#e2e8f0;">
+       <div class="competency-ring mx-auto mb-4" style="background:rgba(245,158,11,0.05);">
+        <svg width="80" height="80">
+         <circle cx="40" cy="40" r="35" fill="none" stroke="#e2e8f0" stroke-width="4" /><circle cx="40" cy="40" r="35" fill="none" stroke="#f59e0b" stroke-width="4" stroke-dasharray="198" stroke-dashoffset="30" stroke-linecap="round" />
+        </svg><i data-lucide="heart" style="width:24px;height:24px;color:#f59e0b;position:relative;z-index:1;"></i>
+       </div>
+       <h4 class="font-bold text-sm mb-1" style="color:#1a2332;">Kepribadian</h4>
+       <p class="text-xs" style="color:#64748b;">Menjadi teladan dengan integritas &amp; karakter mulia</p>
+      </div>
+     </div><!-- Character Timeline -->
+     <div class="fade-up">
+      <h3 class="text-xl font-bold mb-8 text-center" style="color:#1a2332;">Karakter Guru yang Ingin Dibangun</h3>
+      <div class="max-w-2xl mx-auto relative">
+       <div class="timeline-line" style="background: linear-gradient(to bottom, #2563EB, #10b981);"></div>
+       <div class="space-y-8">
+        <div class="flex gap-5">
+         <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 relative z-10" style="background:#2563EB;">
+          <i data-lucide="zap" style="width:16px;height:16px;color:#fff;"></i>
+         </div>
+         <div class="rounded-xl p-5 border flex-1" style="background:#fff;border-color:#e2e8f0;">
+          <h4 class="font-bold text-sm mb-1" style="color:#1a2332;">Adaptif &amp; Inovatif</h4>
+          <p class="text-xs" style="color:#64748b;">Mampu beradaptasi dengan perubahan kurikulum dan memanfaatkan teknologi secara kreatif untuk meningkatkan kualitas pembelajaran.</p>
+         </div>
+        </div>
+        <div class="flex gap-5">
+         <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 relative z-10" style="background:#8b5cf6;">
+          <i data-lucide="shield" style="width:16px;height:16px;color:#fff;"></i>
+         </div>
+         <div class="rounded-xl p-5 border flex-1" style="background:#fff;border-color:#e2e8f0;">
+          <h4 class="font-bold text-sm mb-1" style="color:#1a2332;">Reflektif &amp; Berintegritas</h4>
+          <p class="text-xs" style="color:#64748b;">Senantiasa melakukan refleksi terhadap praktik mengajar dan menjunjung tinggi etika profesi keguruan.</p>
+         </div>
+        </div>
+        <div class="flex gap-5">
+         <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 relative z-10" style="background:#10b981;">
+          <i data-lucide="heart-handshake" style="width:16px;height:16px;color:#fff;"></i>
+         </div>
+         <div class="rounded-xl p-5 border flex-1" style="background:#fff;border-color:#e2e8f0;">
+          <h4 class="font-bold text-sm mb-1" style="color:#1a2332;">Empatik &amp; Inklusif</h4>
+          <p class="text-xs" style="color:#64748b;">Memahami kebutuhan setiap peserta didik dan menciptakan lingkungan belajar yang aman, nyaman, dan menghargai keberagaman.</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider max-w-6xl mx-auto" style="color:#1a2332;"></div><!-- REFLEKSI SECTION -->
+   <section id="refleksi" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="fade-up text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold mb-4" style="background:rgba(37,99,235,0.08);color:#2563EB;">
+       04 — REFLEKSI
+      </div>
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-3" style="color:#1a2332;">Refleksi Diri</h2>
+     </div>
+     <div class="max-w-3xl mx-auto">
+      <div class="fade-up rounded-2xl p-8 md:p-10 border" style="background:#fff;border-color:#e2e8f0;">
+       <div class="space-y-6 text-sm leading-relaxed" style="color:#64748b;">
+        <p>Perjalanan PPG Prajabatan telah memberikan pengalaman transformatif yang mengubah perspektif saya tentang pendidikan. Dari sekadar memahami teori belajar menjadi mampu menerapkannya secara kontekstual di kelas nyata.</p>
+        <p><strong style="color:#1a2332;">Hal yang paling berdampak</strong> adalah pengalaman langsung menghadapi keberagaman peserta didik. Setiap anak memiliki cerita, gaya belajar, dan kebutuhan unik yang menuntut saya untuk terus belajar dan beradaptasi.</p>
+        <p><strong style="color:#1a2332;">Tantangan terbesar</strong> yang saya hadapi adalah mengelola waktu pembelajaran agar setiap aktivitas berjalan efektif tanpa mengorbankan kedalaman materi. Melalui bimbingan GP dan DPL, saya belajar bahwa perencanaan yang matang dan fleksibilitas adalah kunci.</p>
+        <p><strong style="color:#1a2332;">Ke depan,</strong> saya berkomitmen untuk terus mengembangkan diri melalui komunitas belajar, pelatihan, dan refleksi berkelanjutan agar menjadi guru yang benar-benar bermakna bagi setiap peserta didik.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- FOOTER -->
+   <footer class="py-10 border-t" style="border-color:#e2e8f0;">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+     <div class="flex items-center justify-center gap-2 mb-3">
+      <div class="w-6 h-6 rounded-md flex items-center justify-center" style="background:#2563EB;">
+        <i data-lucide="graduation-cap" style="width:12px;height:12px;color:#fff;"></i>
+      </div><span class="font-bold text-sm" style="color:#1a2332;">E-Portfolio PPG Prajabatan</span>
+     </div>
+     <p class="text-xs" style="color:#94a3b8;">© 2025 — Dibuat dengan dedikasi untuk pendidikan Indonesia yang lebih baik.</p>
+    </div>
+   </footer>
+  </main>
+  <script>
+    // --- Config & Element SDK ---
+    const defaultConfig = {
+      background_color: '#FAFBFC',
+      surface_color: '#FFFFFF',
+      text_color: '#1a2332',
+      primary_action_color: '#2563EB',
+      secondary_action_color: '#10b981',
+      font_family: 'Plus Jakarta Sans',
+      font_size: 16,
+      student_name: 'Ulfa Mardatillah',
+      student_origin: 'Merangin, Jambi',
+      student_quote: '"Pendidikan adalah senjata paling ampuh yang bisa kamu gunakan untuk mengubah dunia."',
+      hero_tagline: 'Membangun generasi emas melalui pendidikan yang bermakna dan inovatif.',
+      mission_title: 'Misi Profesional'
+    };
+
+    function applyConfig(config) {
+      const c = { ...defaultConfig, ...config };
+      const font = c.font_family || defaultConfig.font_family;
+      const baseSize = c.font_size || defaultConfig.font_size;
+      const fontStack = `${font}, Plus Jakarta Sans, sans-serif`;
+
+      document.body.style.backgroundColor = c.background_color;
+      document.body.style.color = c.text_color;
+      document.body.style.fontFamily = fontStack;
+
+      // Hero
+      const heroName = document.getElementById('hero-name');
+      if (heroName) { heroName.textContent = c.student_name; heroName.style.color = c.text_color; heroName.style.fontSize = `${baseSize * 3}px`; heroName.style.fontFamily = fontStack; }
+      const heroTagline = document.getElementById('hero-tagline');
+      if (heroTagline) { heroTagline.textContent = c.hero_tagline; heroTagline.style.color = c.secondary_action_color; heroTagline.style.fontSize = `${baseSize * 1.2}px`; }
+
+      // Profil
+      const originPlace = document.getElementById('origin-place');
+      if (originPlace) originPlace.textContent = c.student_origin;
+      const profilQuote = document.getElementById('profil-quote');
+      if (profilQuote) profilQuote.textContent = c.student_quote;
+
+      // Mission
+      const missionText = document.getElementById('mission-text');
+      if (missionText) { missionText.textContent = c.mission_title; missionText.style.fontSize = `${baseSize * 1.5}px`; }
+
+      // Nav brand
+      const navBrand = document.getElementById('nav-brand-text');
+      if (navBrand) navBrand.style.fontFamily = fontStack;
+
+      // Primary action color on buttons and badges
+      document.querySelectorAll('[style*="background:#2563EB"], [style*="background-color:#2563EB"]').forEach(el => {
+        if (!el.classList.contains('blob')) el.style.backgroundColor = c.primary_action_color;
+      });
+
+      // Section headings font
+      document.querySelectorAll('h2').forEach(el => {
+        el.style.fontFamily = fontStack;
+        el.style.color = c.text_color;
+        el.style.fontSize = `${baseSize * 2.2}px`;
+      });
+
+      // Cards surface
+      document.querySelectorAll('.card-hover, .artifact-card').forEach(el => {
+        if (!el.style.background.includes('gradient')) el.style.backgroundColor = c.surface_color;
+      });
+
+      // Body text size
+      document.querySelectorAll('p, .text-sm').forEach(el => {
+        if (!el.closest('.competency-ring')) el.style.fontFamily = fontStack;
+      });
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => applyConfig(config),
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+            { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+            { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+            { get: () => config.primary_action_color || defaultConfig.primary_action_color, set: (v) => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); } },
+            { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } }
+          ],
+          borderables: [],
+          fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+          fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['student_name', config.student_name || defaultConfig.student_name],
+          ['student_origin', config.student_origin || defaultConfig.student_origin],
+          ['student_quote', config.student_quote || defaultConfig.student_quote],
+          ['hero_tagline', config.hero_tagline || defaultConfig.hero_tagline],
+          ['mission_title', config.mission_title || defaultConfig.mission_title]
+        ])
+      });
+    }
+
+    // --- Tab Switching ---
+    function switchTab(tab, btn) {
+      document.querySelectorAll('.artifact-panel').forEach(p => p.classList.add('hidden'));
+      document.querySelector(`[data-panel="${tab}"]`).classList.remove('hidden');
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.style.background = '#f1f5f9'; b.style.color = '#64748b'; b.classList.remove('active-tab');
+      });
+      btn.style.background = '#2563EB'; btn.style.color = '#fff'; btn.classList.add('active-tab');
+    }
+
+    // --- Mobile Menu ---
+    function toggleMobileMenu() {
+      document.getElementById('mobile-menu').classList.toggle('open');
+    }
+
+    // --- Scroll spy & nav highlight ---
+    const sections = ['hero', 'profil', 'artefak', 'model-guru', 'refleksi'];
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          document.querySelectorAll('#nav-links-desktop .nav-link').forEach(l => {
+            l.style.color = l.dataset.section === id ? '#1a2332' : '#64748b';
+            l.classList.toggle('active', l.dataset.section === id);
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+    sections.forEach(s => { const el = document.getElementById(s); if (el) observer.observe(el); });
+
+    // --- Fade-in on scroll ---
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+    // Init icons
+    lucide.createIcons();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fd3bddc93b958ef',t:'MTc3OTAzMjY0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

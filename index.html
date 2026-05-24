@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ulfa Mardatillah - E-Portfolio PPG</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+  <style>
+    * {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #F8FAFC;
+      overflow-x: hidden;
+      color: #0F172A;
+    }
+
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(37, 99, 235, .04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, .04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .glass {
+      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, .75);
+      border: 1px solid rgba(255, 255, 255, .4);
+    }
+
+    .card-hover {
+      transition: all .4s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 60px rgba(37, 99, 235, .12);
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #1D4ED8, #7C3AED);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(90px);
+      opacity: .15;
+      z-index: 0;
+    }
+
+    .floating {
+      animation: floating 5s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- UNIQUE DESIGN SYSTEM -->
+  <!--
+DESIGN CONCEPT:
+Neo Education Dashboard + Startup Portfolio
+Unique characteristics:
+- Asymmetrical layout
+- Floating education metrics
+- Bento-grid portfolio
+- Glassmorphism layered UI
+- Editorial typography
+- Dynamic preview modal
+- Education startup aesthetic
+- White navy futuristic identity
+-->
+
+  <!-- NAVBAR -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+      <div class="flex items-center gap-3">
+        <div
+          class="w-11 h-11 rounded-2xl bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-200">
+          <span class="material-symbols-outlined">
+            home
+          </span>
+        </div>
+
+        <div>
+          <h1 class="font-bold text-lg">Ulfa Mardatillah</h1>
+          <p class="text-xs text-slate-500">E-Portfolio PPG Informatika</p>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#hero" class="text-blue-600">Beranda</a>
+        <a href="#profil">Profil</a>
+        <a href="#artefak">Artefak</a>
+        <a href="#refleksi">Refleksi</a>
+        <a href="#guru">Model Guru</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+  <section id="hero" class="relative min-h-screen flex items-center overflow-hidden hero-grid">
+
+    <div class="blob bg-blue-500 w-[400px] h-[400px] top-[-100px] left-[-100px]"></div>
+    <div class="blob bg-violet-500 w-[350px] h-[350px] bottom-[-100px] right-[-100px]"></div>
+
+    <div class="max-w-7xl mx-auto px-6 pt-32 relative z-10 w-full">
+
+      <div class="grid lg:grid-cols-2 items-center gap-16">
+
+        <!-- LEFT -->
+        <div>
+
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-700 text-sm font-semibold mb-7">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            Calon Guru Profesional
+          </div>
+
+          <h1 class="text-5xl lg:text-7xl font-extrabold leading-[1.05] tracking-[-0.04em] mb-6">
+            Belajar.<br>
+            Berkarya.<br>
+            <span class="gradient-text">Berbagi.</span>
+          </h1>
+
+          <p class="text-slate-500 text-lg leading-relaxed max-w-xl mb-10">
+            Perjalanan saya dalam Program PPG untuk menjadi guru yang profesional,
+            reflektif, adaptif, dan berdampak bagi peserta didik di era transformasi digital.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="#profil"
+              class="px-7 py-4 bg-blue-600 hover:bg-blue-700 transition text-white rounded-2xl font-semibold shadow-xl shadow-blue-200 inline-flex items-center gap-2">
+              Jelajahi Portfolio
+              <i data-lucide="arrow-right"></i>
+            </a>
+
+            <a href="#artefak"
+              class="px-7 py-4 border border-slate-200 rounded-2xl font-semibold hover:bg-white transition">
+              Tentang Saya
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- RIGHT -->
+        <div class="relative flex justify-center">
+
+          <!-- Floating Card -->
+          <div class="absolute top-16 -left-10 glass rounded-3xl p-5 shadow-2xl floating hidden lg:block">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center text-blue-600">
+                <i data-lucide="code-2"></i>
+              </div>
+
+              <div>
+                <p class="text-xs text-slate-400">Informatika</p>
+                <h4 class="font-bold">Creative Learning</h4>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="absolute bottom-10 -right-5 glass rounded-3xl p-5 shadow-2xl floating hidden lg:block">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-violet-100 flex items-center justify-center text-violet-600">
+                <i data-lucide="bar-chart-3"></i>
+              </div>
+
+              <div>
+                <p class="text-xs text-slate-400">Innovation</p>
+                <h4 class="font-bold">Future Education</h4>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- IMAGE -->
+          <div class="relative">
+
+            <div
+              class="absolute inset-0 bg-gradient-to-tr from-blue-600 to-violet-600 rounded-[40px] rotate-6 scale-105 opacity-20">
+            </div>
+
+            <div
+              class="relative bg-gradient-to-tr from-blue-600 to-violet-600 p-2 rounded-[40px] shadow-2xl shadow-blue-200">
+
+              <div class="bg-white rounded-[34px] overflow-hidden">
+                <img src="./img/ppulfa.png" alt="Ulfa" class="w-full max-w-[480px] object-contain drop-shadow-2xl">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+  </section>
+
+
+  <!-- PROFIL -->
+  <section id="profil" class="py-32 bg-white">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="text-center mb-20">
+        <p class="text-blue-600 font-semibold mb-4">PROFIL MAHASISWA</p>
+        <h2 class="text-4xl font-extrabold mb-5">Tentang Saya</h2>
+        <p class="text-slate-500 max-w-2xl mx-auto leading-relaxed">
+          Perjalanan hidup, budaya daerah, dan inspirasi yang membentuk saya menjadi calon guru informatika.
+        </p>
+      </div>
+
+
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <div>
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop"
+            class="rounded-[32px] shadow-2xl">
+        </div>
+
+
+        <div>
+          <h3 class="text-3xl font-bold mb-6 leading-tight">
+            Dari Merangin, Jambi<br>
+            untuk Pendidikan Indonesia.
+          </h3>
+
+          <div class="space-y-6 text-slate-500 leading-relaxed">
+
+            <p>
+              Saya tumbuh di Merangin, Jambi, daerah yang kaya budaya,
+              nilai gotong royong, dan kisah perjuangan pendidikan seperti Sokola Rimba.
+              Lingkungan tersebut membentuk saya menjadi pribadi yang adaptif,
+              reflektif, dan memiliki semangat berbagi ilmu.
+            </p>
+
+            <p>
+              Ketertarikan saya pada informatika dan transformasi digital mendorong saya
+              untuk menghadirkan pembelajaran yang tidak hanya fokus pada teori,
+              tetapi juga mempersiapkan siswa menghadapi tantangan dunia digital dan industri masa depan.
+            </p>
+
+          </div>
+
+
+          <div class="mt-10 glass rounded-3xl p-7 shadow-xl">
+            <p class="text-lg italic leading-relaxed text-slate-700">
+              “Mendidik dengan pengalaman, membangun dengan empati,
+              dan mempersiapkan generasi untuk masa depan digital.”
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ARTEFAK -->
+  <section id="artefak" class="py-32">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="flex items-end justify-between flex-wrap gap-6 mb-16">
+
+        <div>
+          <p class="text-blue-600 font-semibold mb-4">ARTEFAK PEMBELAJARAN</p>
+          <h2 class="text-4xl font-extrabold mb-5">Hasil Karya & Pembelajaran</h2>
+          <p class="text-slate-500 max-w-2xl leading-relaxed">
+            Kumpulan modul ajar, media pembelajaran, LKPD, asesmen,
+            video pembelajaran, dan hasil kerja siswa selama proses PPG.
+          </p>
+        </div>
+
+      </div>
+
+
+      <!-- FILTER BUTTON -->
+      <div class="flex flex-wrap gap-3 mb-14" id="filter-container">
+
+        <button
+          class="artifact-filter active-filter px-5 py-3 rounded-2xl bg-blue-600 text-white font-semibold transition"
+          data-filter="all">
+          Semua
+        </button>
+
+        <button class="artifact-filter px-5 py-3 rounded-2xl bg-white border border-slate-200 font-semibold transition"
+          data-filter="modul">
+          Modul Ajar
+        </button>
+
+        <button class="artifact-filter px-5 py-3 rounded-2xl bg-white border border-slate-200 font-semibold transition"
+          data-filter="media">
+          Media Ajar
+        </button>
+
+        <button class="artifact-filter px-5 py-3 rounded-2xl bg-white border border-slate-200 font-semibold transition"
+          data-filter="lkpd">
+          LKPD
+        </button>
+
+        <button class="artifact-filter px-5 py-3 rounded-2xl bg-white border border-slate-200 font-semibold transition"
+          data-filter="hasil">
+          Hasil Siswa
+        </button>
+
+        <button class="artifact-filter px-5 py-3 rounded-2xl bg-white border border-slate-200 font-semibold transition"
+          data-filter="asesmen">
+          Asesmen
+        </button>
+
+        <button class="artifact-filter px-5 py-3 rounded-2xl bg-white border border-slate-200 font-semibold transition"
+          data-filter="video">
+          Video
+        </button>
+
+      </div>
+
+
+      <!-- GALLERY -->
+      <div class="grid lg:grid-cols-3 gap-8" id="artifact-gallery">
+
+
+        <!-- CARD -->
+        <div class="artifact-card card-hover bg-white rounded-[32px] overflow-hidden border border-slate-100 shadow-sm"
+          data-category="modul" data-type="pdf"
+          data-src="https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf">
+
+          <div class="h-56 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"
+              class="w-full h-full object-cover hover:scale-110 transition duration-500">
+
+            <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-semibold">
+              PDF
+            </div>
+          </div>
+
+          <div class="p-7">
+
+            <div class="inline-flex px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold mb-4">
+              MODUL AJAR
+            </div>
+
+            <h3 class="font-bold text-xl mb-4">
+              Algoritma & Pemrograman Dasar
+            </h3>
+
+            <p class="text-slate-500 text-sm leading-relaxed mb-6">
+              Modul ajar pembelajaran algoritma dasar dan flowchart.
+            </p>
+
+            <button class="preview-btn inline-flex items-center gap-2 text-blue-600 font-semibold">
+              Preview
+              <i data-lucide="arrow-right"></i>
+            </button>
+
+          </div>
+        </div>
+
+
+        <!-- MEDIA -->
+        <div class="artifact-card card-hover bg-white rounded-[32px] overflow-hidden border border-slate-100 shadow-sm"
+          data-category="media" data-type="image"
+          data-src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop">
+
+          <div class="h-56 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop"
+              class="w-full h-full object-cover hover:scale-110 transition duration-500">
+
+            <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-semibold">
+              IMAGE
+            </div>
+          </div>
+
+          <div class="p-7">
+
+            <div class="inline-flex px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold mb-4">
+              MEDIA AJAR
+            </div>
+
+            <h3 class="font-bold text-xl mb-4">
+              Media Interaktif Flowchart
+            </h3>
+
+            <p class="text-slate-500 text-sm leading-relaxed mb-6">
+              Media pembelajaran visual berbasis flowchart dan diagram.
+            </p>
+
+            <button class="preview-btn inline-flex items-center gap-2 text-blue-600 font-semibold">
+              Preview
+              <i data-lucide="arrow-right"></i>
+            </button>
+
+          </div>
+        </div>
+
+
+        <!-- VIDEO -->
+        <div class="artifact-card card-hover bg-white rounded-[32px] overflow-hidden border border-slate-100 shadow-sm"
+          data-category="video" data-type="video" data-src="https://www.youtube.com/embed/Tn6-PIqc4UM">
+
+          <div class="h-56 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop"
+              class="w-full h-full object-cover hover:scale-110 transition duration-500">
+
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div
+                class="w-20 h-20 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center shadow-xl">
+                <i data-lucide="play" class="text-blue-600 w-8 h-8"></i>
+              </div>
+            </div>
+
+            <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-red-600 text-white text-xs font-semibold">
+              YOUTUBE
+            </div>
+          </div>
+
+          <div class="p-7">
+
+            <div class="inline-flex px-3 py-1 rounded-full bg-violet-100 text-violet-700 text-xs font-semibold mb-4">
+              VIDEO AJAR
+            </div>
+
+            <h3 class="font-bold text-xl mb-4">
+              Video Pembelajaran Informatika
+            </h3>
+
+            <p class="text-slate-500 text-sm leading-relaxed mb-6">
+              Dokumentasi pembelajaran dan praktik mengajar.
+            </p>
+
+            <button class="preview-btn inline-flex items-center gap-2 text-blue-600 font-semibold">
+              Preview
+              <i data-lucide="arrow-right"></i>
+            </button>
+
+          </div>
+        </div>
+
+        <!-- LKPD -->
+        <div class="artifact-card card-hover bg-white rounded-[32px] overflow-hidden border border-slate-100 shadow-sm"
+          data-category="lkpd" data-type="pdf"
+          data-src="https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf">
+
+          <div class="h-56 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop"
+              class="w-full h-full object-cover hover:scale-110 transition duration-500">
+
+            <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-orange-500 text-white text-xs font-semibold">
+              PDF
+            </div>
+          </div>
+
+          <div class="p-7">
+
+            <div class="inline-flex px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-semibold mb-4">
+              LKPD
+            </div>
+
+            <h3 class="font-bold text-xl mb-4">
+              LKPD Logika Informatika
+            </h3>
+
+            <p class="text-slate-500 text-sm leading-relaxed mb-6">
+              Lembar kerja peserta didik berbasis pemecahan masalah.
+            </p>
+
+            <button class="preview-btn inline-flex items-center gap-2 text-blue-600 font-semibold">
+              Preview
+              <i data-lucide="arrow-right"></i>
+            </button>
+
+          </div>
+        </div>
+
+
+        <!-- HASIL SISWA -->
+        <div class="artifact-card card-hover bg-white rounded-[32px] overflow-hidden border border-slate-100 shadow-sm"
+          data-category="hasil" data-type="image"
+          data-src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop">
+
+          <div class="h-56 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop"
+              class="w-full h-full object-cover hover:scale-110 transition duration-500">
+
+            <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-cyan-600 text-white text-xs font-semibold">
+              IMAGE
+            </div>
+          </div>
+
+          <div class="p-7">
+
+            <div class="inline-flex px-3 py-1 rounded-full bg-cyan-100 text-cyan-700 text-xs font-semibold mb-4">
+              HASIL SISWA
+            </div>
+
+            <h3 class="font-bold text-xl mb-4">
+              Project Website Siswa
+            </h3>
+
+            <p class="text-slate-500 text-sm leading-relaxed mb-6">
+              Dokumentasi hasil praktik dan project peserta didik.
+            </p>
+
+            <button class="preview-btn inline-flex items-center gap-2 text-blue-600 font-semibold">
+              Preview
+              <i data-lucide="arrow-right"></i>
+            </button>
+
+          </div>
+        </div>
+
+
+        <!-- ASESMEN -->
+        <div class="artifact-card card-hover bg-white rounded-[32px] overflow-hidden border border-slate-100 shadow-sm"
+          data-category="asesmen" data-type="pdf"
+          data-src="https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf">
+
+          <div class="h-56 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop"
+              class="w-full h-full object-cover hover:scale-110 transition duration-500">
+
+            <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-rose-600 text-white text-xs font-semibold">
+              PDF
+            </div>
+          </div>
+
+          <div class="p-7">
+
+            <div class="inline-flex px-3 py-1 rounded-full bg-rose-100 text-rose-700 text-xs font-semibold mb-4">
+              ASESMEN
+            </div>
+
+            <h3 class="font-bold text-xl mb-4">
+              Instrumen Penilaian
+            </h3>
+
+            <p class="text-slate-500 text-sm leading-relaxed mb-6">
+              Penilaian formatif dan sumatif pembelajaran informatika.
+            </p>
+
+            <button class="preview-btn inline-flex items-center gap-2 text-blue-600 font-semibold">
+              Preview
+              <i data-lucide="arrow-right"></i>
+            </button>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PAGINATION -->
+      <div class="flex items-center justify-center gap-4 mt-14">
+
+        <button id="prev-btn"
+          class="px-6 py-3 rounded-2xl border border-slate-200 bg-white font-semibold hover:bg-slate-100 transition">
+          Prev
+        </button>
+
+        <div id="page-indicator" class="text-sm text-slate-500 font-medium">
+          Page 1
+        </div>
+
+        <button id="next-btn"
+          class="px-6 py-3 rounded-2xl border border-slate-200 bg-white font-semibold hover:bg-slate-100 transition">
+          Next
+        </button>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- MODAL -->
+  <div id="artifact-modal"
+    class="fixed inset-0 bg-black/70 backdrop-blur-md z-[999] hidden items-center justify-center p-6">
+
+    <div class="bg-white rounded-[32px] max-w-5xl w-full relative overflow-hidden shadow-2xl">
+
+      <button id="close-modal"
+        class="absolute top-5 right-5 z-20 w-10 h-10 rounded-2xl bg-white text-black shadow-lg flex items-center justify-center">
+        <span class="material-symbols-outlined">
+          close
+        </span>
+      </button>
+
+      <div id="modal-content" class="w-full h-[80vh] bg-slate-100"></div>
+
+    </div>
+  </div>
+
+  <!-- MODEL GURU -->
+  <section id="guru" class="py-32 relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-violet-50">
+
+    <!-- BACKGROUND EFFECT -->
+
+    <!-- BLUE GLOW -->
+    <div class="absolute top-[-120px] left-[-120px] w-[420px] h-[420px] bg-blue-400/20 rounded-full blur-[140px]"></div>
+
+    <!-- VIOLET GLOW -->
+    <div class="absolute bottom-[-120px] right-[-120px] w-[420px] h-[420px] bg-violet-400/20 rounded-full blur-[140px]">
+    </div>
+
+    <!-- GRID DECOR -->
+    <div class="absolute inset-0 opacity-[0.03]" style="
+      background-image:
+      linear-gradient(#1E3A8A 1px, transparent 1px),
+      linear-gradient(90deg, #1E3A8A 1px, transparent 1px);
+      background-size: 40px 40px;
+    "></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+
+      <!-- TITLE -->
+      <div class="text-center mb-20">
+
+        <p class="text-blue-600 font-semibold tracking-[0.2em] uppercase mb-4">
+          Model Guru
+        </p>
+
+        <h2 class="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight">
+          Guru Profesional<br>
+          yang Ingin Dibangun
+        </h2>
+
+        <p class="max-w-2xl mx-auto text-slate-500 leading-relaxed">
+          Karakter dan kompetensi yang ingin saya bangun sebagai calon guru informatika
+          untuk menghadapi transformasi pendidikan dan era digital masa depan.
+        </p>
+
+      </div>
+
+
+      <!-- CARD GRID -->
+      <div class="grid lg:grid-cols-4 gap-7">
+
+        <!-- CARD 1 -->
+        <div
+          class="bg-white/80 backdrop-blur-xl border border-white/40 rounded-[32px] p-8 text-center shadow-lg hover:-translate-y-2 transition duration-500">
+
+          <div
+            class="w-20 h-20 rounded-[28px] bg-blue-100 text-blue-600 flex items-center justify-center mx-auto mb-6 shadow-inner">
+            <span class="material-symbols-outlined text-[38px]">
+              volcano
+            </span>
+          </div>
+
+          <h3 class="font-bold text-xl mb-4">
+            Adaptif
+          </h3>
+
+          <p class="text-sm text-slate-500 leading-relaxed">
+            Mampu mengikuti perkembangan teknologi, AI, dan transformasi digital
+            dalam dunia pendidikan modern.
+          </p>
+
+        </div>
+
+
+        <!-- CARD 2 -->
+        <div
+          class="bg-white/80 backdrop-blur-xl border border-white/40 rounded-[32px] p-8 text-center shadow-lg hover:-translate-y-2 transition duration-500">
+
+          <div
+            class="w-20 h-20 rounded-[28px] bg-violet-100 text-violet-600 flex items-center justify-center mx-auto mb-6 shadow-inner">
+            <span class="material-symbols-outlined text-[38px]">
+              developer_mode_tv
+            </span>
+          </div>
+
+          <h3 class="font-bold text-xl mb-4">
+            Inovatif
+          </h3>
+
+          <p class="text-sm text-slate-500 leading-relaxed">
+            Mengembangkan pembelajaran kreatif berbasis pengalaman,
+            teknologi, dan pendekatan interaktif.
+          </p>
+
+        </div>
+
+
+        <!-- CARD 3 -->
+        <div
+          class="bg-white/80 backdrop-blur-xl border border-white/40 rounded-[32px] p-8 text-center shadow-lg hover:-translate-y-2 transition duration-500">
+
+          <div
+            class="w-20 h-20 rounded-[28px] bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-6 shadow-inner">
+            <span class="material-symbols-outlined text-[38px]">
+              psychology
+            </span>
+          </div>
+
+          <h3 class="font-bold text-xl mb-4">
+            Humanis
+          </h3>
+
+          <p class="text-sm text-slate-500 leading-relaxed">
+            Memahami kebutuhan peserta didik dan menciptakan lingkungan belajar
+            yang aman, suportif, dan empatik.
+          </p>
+
+        </div>
+
+
+        <!-- CARD 4 -->
+        <div
+          class="bg-white/80 backdrop-blur-xl border border-white/40 rounded-[32px] p-8 text-center shadow-lg hover:-translate-y-2 transition duration-500">
+
+          <div
+            class="w-20 h-20 rounded-[28px] bg-orange-100 text-orange-600 flex items-center justify-center mx-auto mb-6 shadow-inner">
+            <span class="material-symbols-outlined text-[38px]">
+              handshake
+            </span>
+          </div>
+
+          <h3 class="font-bold text-xl mb-4">
+            Reflektif
+          </h3>
+
+          <p class="text-sm text-slate-500 leading-relaxed">
+            Terus mengevaluasi dan meningkatkan kualitas pembelajaran
+            melalui refleksi dan pengembangan diri.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- REFLEKSI -->
+  <section id="refleksi" class="py-32">
+
+    <div class="max-w-5xl mx-auto px-6">
+
+      <div class="text-center mb-20">
+        <p class="text-blue-600 font-semibold mb-4">REFLEKSI DIRI</p>
+        <h2 class="text-4xl font-extrabold mb-5">Perjalanan Pembelajaran</h2>
+      </div>
+
+
+      <div
+        class="bg-white rounded-[40px] p-10 lg:p-14 shadow-sm border border-slate-100 leading-relaxed text-slate-500 space-y-6">
+
+        <p>
+          Perjalanan PPG memberikan pengalaman yang membentuk saya menjadi calon guru
+          yang lebih reflektif, adaptif, dan terbuka terhadap perkembangan teknologi pendidikan.
+        </p>
+
+        <p>
+          Saya belajar bahwa pembelajaran bukan hanya tentang menyampaikan materi,
+          tetapi juga tentang memahami karakter siswa, membangun motivasi,
+          dan menciptakan pengalaman belajar yang bermakna.
+        </p>
+
+        <p>
+          Ke depan, saya ingin terus mengembangkan diri dalam bidang informatika,
+          pembelajaran digital, dan inovasi pendidikan agar dapat memberikan dampak positif
+          bagi generasi masa depan.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer id="kontak" class="bg-[#0F172A] text-white py-16">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+
+        <div>
+          <h2 class="text-3xl font-bold mb-5">
+            Ulfa Mardatillah
+          </h2>
+
+          <p class="text-slate-400 leading-relaxed max-w-lg">
+            E-Portfolio PPG Informatika
+          <p></p>
+          ulfamardatillah@gmail.com
+          </p>
+        </div>
+
+
+        <div class="flex lg:justify-end gap-4">
+          <!-- LINKEDIN -->
+          <a href="https://linkedin.com/in/ulfa-mardatillah-7b5b59117/" target="_blank"
+            class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center hover:bg-[#0A66C2] transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect width="4" height="12" x="2" y="9" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+          </a>
+
+          <!-- INSTAGRAM -->
+          <a href="https://instagram.com/ulfa_mdh" target="_blank"
+            class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center hover:bg-pink-500 transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+              <path d="M16 11.37a4 4 0 1 1-7.75 1.13 4 4 0 0 1 7.75-1.13z" />
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+            </svg>
+          </a>
+
+          <!-- EMAIL -->
+          <a href="mailto:ulfamardatillah@gmail.com"
+            class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center hover:bg-blue-600 transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+              <path d="m22 7-10 5L2 7" />
+            </svg>
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="border-t border-white/10 mt-12 pt-8 text-center text-slate-500 text-sm">
+        © 2026 • Copyright Ulfa Mardatillah
+      </div>
+
+    </div>
+  </footer>
+
+
+
+  <script src="./script/filter-artefak.js"></script>
+
+
+  <script>
+
+    // ICON
+    lucide.createIcons();
+
+
+    document.querySelectorAll('.preview-btn').forEach((button) => {
+
+      button.addEventListener('click', () => {
+
+        const card = button.closest('.artifact-card')
+
+        const type = card.dataset.type
+        const src = card.dataset.src
+
+        modal.classList.remove('hidden')
+        modal.classList.add('flex')
+
+
+        if (type === 'image') {
+
+          modalContent.innerHTML = `
+          <img
+            src="${src}"
+            class="w-full h-full object-cover"
+          >
+        `
+        }
+
+
+        if (type === 'pdf') {
+
+          modalContent.innerHTML = `
+          <iframe
+            src="${src}"
+            class="w-full h-full"
+          ></iframe>
+        `
+        }
+
+
+        if (type === 'youtube') {
+
+          modalContent.innerHTML = `
+          <iframe
+            src="${src}"
+            class="w-full h-full"
+            allowfullscreen
+          ></iframe>
+        `
+        }
+
+      })
+
+    })
+
+
+    // CLOSE MODAL
+    closeModal.addEventListener('click', () => {
+
+      modal.classList.add('hidden')
+      modal.classList.remove('flex')
+
+      modalContent.innerHTML = ''
+
+    })
+
+
+    // CLOSE CLICK OUTSIDE
+    modal.addEventListener('click', (e) => {
+
+      if (e.target === modal) {
+
+        modal.classList.add('hidden')
+        modal.classList.remove('flex')
+
+        modalContent.innerHTML = ''
+      }
+
+    })
+
+  </script>
+
+</body>
+
+</html>
